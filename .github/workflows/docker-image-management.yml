@@ -9,10 +9,10 @@ jobs:
     steps:
     - name: Get Tag
       id: vars
-      run: echo ::set-output name=tag::${git describe --abbrev=0}
+      run: echo ::set-output name=tag::${git tag -l --sort=-creatordate | head -n 1}
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: | 
-        docker login -u jmigac ${{ secrets.DOCKER_PAT }}
+        docker login -u jmigac -p ${{ secrets.DOCKER_PAT }}
         docker build . --tag jmigac/lite-aem-compactor:latest --tag jmigac/lite-aem-compactor:${{ steps.vars.outputs.tag }}
         docker push jmigac/lite-aem-compactor:latest --all-tags
