@@ -1,7 +1,7 @@
 services:
   lite-aem-compactor:
     container_name: lite-aem-compactor
-    image: juricamigac/lite-aem-compactor
+    image: jmigac/lite-aem-compactor:1.0
     ports:
       - "3000:3000"
     build:
