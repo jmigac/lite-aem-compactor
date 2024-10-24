@@ -1,0 +1,18 @@
+name: Docker Image Auth & Build & Publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get Tag
+      id: vars
+      run: echo ::set-output name=tag::${git describe --abbrev=0}
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: | 
+        docker login -u jmigac ${{ secrets.DOCKER_PAT }}
+        docker build . --tag jmigac/lite-aem-compactor:latest --tag jmigac/lite-aem-compactor:${{ steps.vars.outputs.tag }}
+        docker push jmigac/lite-aem-compactor:latest --all-tags
