@@ -1,0 +1,14 @@
+{
+  "name": "lite-node-aem-garbage-cleaner",
+  "version": "1.0.0",
+  "description": "Server which on timely bases pings local AEM instances for garbage collection",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jurica Migač",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

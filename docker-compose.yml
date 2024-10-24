@@ -1,0 +1,13 @@
+services:
+  lite-aem-compactor:
+    container_name: lite-aem-compactor
+    image: juricamigac/lite-aem-compactor
+    ports:
+      - "3000:3000"
+    build:
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    environment:
+      - GARBAGE_COLLECTOR_INTERVAL=30
